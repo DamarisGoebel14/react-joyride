@@ -1,17 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import Basic from "./Basic";
+import Carousel from "./Carousel";
+import Controlled from "./Controlled";
+import CustomComponents from "./CustomComponents";
+import Modal from "./Modal";
+import Scroll from "./Scroll";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+import Footer from "./Footer/Footer";
+
+import "./App.css";
+
+class App extends React.Component {
+    render() {
+        return (
+            <BrowserRouter>
+                <div className="demo">
+                    <Switch>
+                        <Route exact path="/" component={Basic} />
+                        <Route path="/controlled" component={Controlled} />
+                        <Route path="/custom" component={CustomComponents} />
+                        <Route path="/carousel" component={Carousel} />
+                        <Route path="/modal" component={Modal} />
+                        <Route path="/scroll" component={Scroll} />
+                    </Switch>
+                    <Footer />
+                </div>
+            </BrowserRouter>
+        );
+    }
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
